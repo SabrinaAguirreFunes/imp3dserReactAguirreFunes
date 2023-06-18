@@ -10,6 +10,7 @@ El proyecto es de un emprendimiento real.
 
 - Vite+React
 - Bootstrap
+- React Router DOM
 
 # Instalación
 

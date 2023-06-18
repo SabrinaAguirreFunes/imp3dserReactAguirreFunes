@@ -1,18 +1,62 @@
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import ItemCard from '../ItemCard/ItemCard';
+import "./ItemListContainer.css"
 
-const ItemListContainer = ({greeting}) => {
+const ItemListContainer = () => {
+
+  let {idCategory} = useParams();
+
+  console.log (idCategory);
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("/data/products.json")
+    .then((response) => response.json())
+    .then((json) => setProducts(json))
+  }, [])
+
+  console.log(products)
+  
+  let productByCategory = [];
+
+  if (idCategory === "hotTrending"){
+    productByCategory = products.filter((product) => product.hotTrending === true);
+  } else {
+    productByCategory = products.filter((product) => product.category === idCategory);
+  }
+
+
+  console.log(productByCategory)
+
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>{greeting}</Card.Title>
-        <Card.Text>
-          Pieza impresa en 3d y pintada a mano
-        </Card.Text>
-        <Button variant="primary">Agregar al carrito</Button>
-      </Card.Body>
-    </Card>
+    idCategory ? 
+    <div className="itemsList" >
+    {productByCategory.map((product) => {
+      return(
+        <div key={product.id}>
+          <Link to={`detail/${product.id}`}>
+          <ItemCard product={product}/>
+          </Link>
+        </div>
+      )
+    })}
+  </div>
+
+    :
+
+    <div className="itemsList" >
+      {products.map((product) => {
+        return(
+          <div key={product.id}>
+            <Link to={`detail/${product.id}`}>
+            <ItemCard product={product}/>
+            </Link>
+          </div>
+        )
+      })}
+    </div>
   );
 }
 
