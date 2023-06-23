@@ -36,8 +36,8 @@ const ItemListContainer = () => {
     {productByCategory.map((product) => {
       return(
         <div key={product.id}>
-          <Link to={`detail/${product.id}`}>
-          <ItemCard product={product}/>
+          <Link to={`/detail/${product.id}`}>
+            <ItemCard product={product}/>
           </Link>
         </div>
       )
@@ -51,7 +51,7 @@ const ItemListContainer = () => {
         return(
           <div key={product.id}>
             <Link to={`detail/${product.id}`}>
-            <ItemCard product={product}/>
+              <ItemCard product={product}/>
             </Link>
           </div>
         )
