@@ -15,7 +15,7 @@ const ItemListContainer = () => {
     fetch("/data/products.json")
     .then((response) => response.json())
     .then((json) => setProducts(json))
-  }, [])
+  }, [products])
 
   console.log(products)
   
@@ -50,7 +50,7 @@ const ItemListContainer = () => {
       {products.map((product) => {
         return(
           <div key={product.id}>
-            <Link to={`detail/${product.id}`}>
+            <Link to={`/detail/${product.id}`}>
               <ItemCard product={product}/>
             </Link>
           </div>

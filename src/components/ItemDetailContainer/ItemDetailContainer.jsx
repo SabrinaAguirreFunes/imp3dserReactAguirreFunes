@@ -14,7 +14,7 @@ const ItemDetailContainer = ({}) => {
     fetch("/data/products.json")
     .then((response) => response.json())
     .then((json) => setProducts(json))
-  }, [])
+  }, [products])
 
   console.log(products)
 
