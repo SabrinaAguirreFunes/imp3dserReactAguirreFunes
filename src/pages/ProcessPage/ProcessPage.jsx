@@ -1,7 +1,9 @@
 const ProcessPage = () => {
   return (
-    <div>Process Page</div>
-  )
-}
+    <div>
+      <h1>Process Page</h1>
+    </div>
+  );
+};
 
-export default ProcessPage
+export default ProcessPage;

@@ -1,7 +1,9 @@
 const AboutUsPage = () => {
   return (
-    <div>AboutUs Page</div>
-  )
-}
+    <div>
+      <h1>AboutUs Page</h1>
+    </div>
+  );
+};
 
-export default AboutUsPage
+export default AboutUsPage;

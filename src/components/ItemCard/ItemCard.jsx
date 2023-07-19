@@ -1,31 +1,33 @@
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import ItemCount from '../ItemCount/ItemCount';
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import Card from "react-bootstrap/Card";
+import ItemCount from "../ItemCount/ItemCount";
+import pricePerml from "../PricePerml/PricePerml";
+import { useCartContext } from "../../context/CartContext";
 
-const ItemCard = ({product}) => {
-    
-  const pricePerml = 50;
+const ItemCard = ({ product }) => {
+  const { addCart } = useCartContext();
+
+  const onAdd = (cant) => {
+    addCart({ ...product, quantity: cant });
+  };
 
   return (
-    <Card style={{ width: '18rem', margin: 5}}>
-      <Card.Img variant="top" src={product.img} />
-      <Card.Body>
-        <Card.Title>{product.name}</Card.Title>
-        <Card.Text>
-          Figura de {product.name} impresa en 3d y pintada a mano
-        </Card.Text>
-        <Card.Text>
-          Altura: {product.height}cm (aprox.)
-        </Card.Text>
-        <Card.Text>
-          Precio: ${product.cost*pricePerml}
-        </Card.Text>
-        <ItemCount/>
-        <Button variant="primary">Agregar al carrito</Button>
-      </Card.Body>
-    </Card>
-  )
-}
+    <div style={{ margin: 7 }}>
+      <Link to={`/detail/${product.id}`}>
+        <Card style={{ width: "18rem", padding: 0 }}>
+          <Card.Img variant="top" src={product.img} />
+          <Card.Body>
+            <Card.Title>{product.name}</Card.Title>
+            <Card.Text>Altura: {product.height}cm (aprox.)</Card.Text>
+            <Card.Text>Precio: ${product.cost * pricePerml}</Card.Text>
+          </Card.Body>
+        </Card>
+      </Link>
+      <Card style={{ width: "18rem", padding: 0 }}>
+        <ItemCount stock={product.stock} onAdd={onAdd} />
+      </Card>
+    </div>
+  );
+};
 
-export default ItemCard
+export default ItemCard;

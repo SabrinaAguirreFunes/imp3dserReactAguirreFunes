@@ -9,8 +9,10 @@ El proyecto es de un emprendimiento real.
 # Herramientas/librerías utilizadas
 
 - Vite+React
-- Bootstrap
 - React Router DOM
+- Bootstrap
+- Formik
+- Yup
 
 # Instalación
 

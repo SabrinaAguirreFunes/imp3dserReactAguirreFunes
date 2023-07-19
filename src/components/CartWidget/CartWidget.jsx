@@ -1,7 +1,9 @@
-const CartWidget = () => {
-  return (
-    <div>🛒7</div>
-)
-}
+import { useCartContext } from "../../context/CartContext";
 
-export default CartWidget
+const CartWidget = () => {
+  const { totalQuantity } = useCartContext();
+
+  return <div>🛒 {totalQuantity() !== 0 && totalQuantity()}</div>;
+};
+
+export default CartWidget;

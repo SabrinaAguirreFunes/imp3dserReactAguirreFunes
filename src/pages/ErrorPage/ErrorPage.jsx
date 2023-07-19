@@ -15,7 +15,7 @@ const ErrorPage = () => {
   return (
     <div>
         <h1>Página no encontrada. </h1>
-        <h2>Redireccionando a Home</h2>
+        <h2>Redireccionando a Home...</h2>
     </div>
   )
 }

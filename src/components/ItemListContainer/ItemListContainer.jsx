@@ -1,63 +1,64 @@
-import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import ItemCard from '../ItemCard/ItemCard';
-import "./ItemListContainer.css"
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { collection, query, getDocs, where } from "firebase/firestore";
+import { db } from "../../firebase/firebaseConfig";
+import ItemCard from "../ItemCard/ItemCard";
+import "./ItemListContainer.css";
 
 const ItemListContainer = () => {
-
-  let {idCategory} = useParams();
-
-  console.log (idCategory);
-
+  let { idCategory } = useParams();
+  console.log(idCategory);
   const [products, setProducts] = useState([]);
+  console.log(products);
 
   useEffect(() => {
-    fetch("/data/products.json")
-    .then((response) => response.json())
-    .then((json) => setProducts(json))
-  }, [products])
+    const getProduct = async () => {
+      const docs = [];
 
-  console.log(products)
-  
-  let productByCategory = [];
+      if (idCategory === "hotTrending") {
+        const q = query(
+          collection(db, "products"),
+          where("hotTrending", "==", true)
+        );
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+          docs.push({ ...doc.data(), id: doc.id });
+        });
+      } else if (idCategory) {
+        const q = query(
+          collection(db, "products"),
+          where("category", "==", idCategory)
+        );
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+          docs.push({ ...doc.data(), id: doc.id });
+        });
+      } else {
+        const q = query(collection(db, "products"));
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+          docs.push({ ...doc.data(), id: doc.id });
+        });
+      }
 
-  if (idCategory === "hotTrending"){
-    productByCategory = products.filter((product) => product.hotTrending === true);
-  } else {
-    productByCategory = products.filter((product) => product.category === idCategory);
-  }
+      console.log(docs);
 
-
-  console.log(productByCategory)
+      setProducts(docs);
+    };
+    getProduct();
+  }, [idCategory]);
 
   return (
-    idCategory ? 
-    <div className="itemsList" >
-    {productByCategory.map((product) => {
-      return(
-        <div key={product.id}>
-          <Link to={`/detail/${product.id}`}>
-            <ItemCard product={product}/>
-          </Link>
-        </div>
-      )
-    })}
-  </div>
-
-    :
-
-    <div className="itemsList" >
+    <div className="itemsList">
       {products.map((product) => {
-        return(
+        return (
           <div key={product.id}>
-            <Link to={`/detail/${product.id}`}>
-              <ItemCard product={product}/>
-            </Link>
+            <ItemCard product={product} />
           </div>
-        )
+        );
       })}
     </div>
   );
-}
+};
 
-export default ItemListContainer
+export default ItemListContainer;
