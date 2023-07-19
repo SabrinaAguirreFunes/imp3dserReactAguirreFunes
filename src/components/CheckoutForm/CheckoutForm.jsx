@@ -5,10 +5,10 @@ import Row from "react-bootstrap/Row";
 import * as formik from "formik";
 import * as yup from "yup";
 
-import { db } from "../../firebase/firebaseConfig";
-
 import { collection, addDoc } from "firebase/firestore";
 import { useState } from "react";
+
+import { db } from "../../firebase/firebaseConfig";
 import { useCartContext } from "../../context/CartContext";
 import OrderSuccessMessage from "../OrderSuccessMessage/OrderSuccessMessage";
 

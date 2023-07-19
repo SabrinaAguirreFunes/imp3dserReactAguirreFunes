@@ -6,15 +6,18 @@ Proyecto de la alumna Sabrina Aguirre Funes para la materia React JS en la carre
 
 El proyecto es de un emprendimiento real.
 
-# Herramientas/librerías utilizadas
+![](https://firebasestorage.googleapis.com/v0/b/fb-imp3dser-react.appspot.com/o/demoFinal.gif?alt=media&token=68c58015-24df-4518-87b3-debbc80855f3)
+
+> GIF - DEMO
+
+## Herramientas/librerías utilizadas
 
 - Vite+React
 - React Router DOM
-- Bootstrap
-- Formik
-- Yup
+- Bootstrap, se utilizo para dar estilos.
+- Formik y Yup, se utilizaron para manejo y validacion de formularios
 
-# Instalación
+## Instalación
 
 1 - Clonar repositorio en el escritorio o directorio deseado
 

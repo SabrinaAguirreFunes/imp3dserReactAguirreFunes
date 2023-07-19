@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
+import { useCartContext } from "../../context/CartContext";
 import ItemCount from "../ItemCount/ItemCount";
 import pricePerml from "../PricePerml/PricePerml";
-import { useCartContext } from "../../context/CartContext";
 
 const ItemCard = ({ product }) => {
   const { addCart } = useCartContext();
