@@ -8,7 +8,7 @@ El proyecto es de un emprendimiento real.
 
 ![](https://firebasestorage.googleapis.com/v0/b/fb-imp3dser-react.appspot.com/o/demoFinal.gif?alt=media&token=68c58015-24df-4518-87b3-debbc80855f3)
 
-> GIF - DEMO
+> GIF - DEMO (https://firebasestorage.googleapis.com/v0/b/fb-imp3dser-react.appspot.com/o/demoFinal.gif?alt=media&token=68c58015-24df-4518-87b3-debbc80855f3)
 
 ## Herramientas/librerías utilizadas
 
